@@ -1,0 +1,5 @@
+.rspec
+Gemfile.lock
+
+.bundle/
+/vendor/cache/*
