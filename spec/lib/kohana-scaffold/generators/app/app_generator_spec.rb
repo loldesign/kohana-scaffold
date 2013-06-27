@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe KohanaScaffold::AppGenerator do
-  it_behaves_like "a Kohana's project skeleton generator"
+  it_behaves_like "a Kohana skeleton generator"
 
   describe "options" do
     let(:options) {[]}

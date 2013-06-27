@@ -1,4 +1,4 @@
-shared_examples "a Kohana's project skeleton generator" do
+shared_examples "a Kohana skeleton generator" do
   DEFAULT_SKELETON = %w(
     application
     application/bootstrap.php
@@ -35,7 +35,7 @@ shared_examples "a Kohana's project skeleton generator" do
     end
   end
 
-  context 'file configuration' do
+  context 'basic file configuration' do
     context 'application/bootstrap.php' do
       subject do
         file = KohanaScaffold::Test.file_absolute_path("application/bootstrap.php")
