@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('thor', '0.18.1')
   s.add_dependency('activesupport', '4.0.0')
+  s.add_dependency('settingslogic', '2.0.9')
 
   s.add_development_dependency('pry', '0.9.12.2')
   s.add_development_dependency('rspec', '2.13.0')

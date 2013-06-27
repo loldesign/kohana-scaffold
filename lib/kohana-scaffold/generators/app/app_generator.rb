@@ -11,6 +11,12 @@ module KohanaScaffold
       aliases: '-p',
       desc: 'Define the Apache public directory'
 
+    class_option :modules,
+      default: [],
+      type: :array,
+      aliases: '-m',
+      desc: 'Define what modules will be loaded'
+
     class_option :silent,
       type: :boolean,
       aliases: '-V',

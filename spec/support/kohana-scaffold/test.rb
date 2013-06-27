@@ -7,10 +7,14 @@ module KohanaScaffold
     class Regexp
       BASE_URL    = /\'base_url\' => \'\/#{APPLICATION_NAME}\/\',/
       COOKIE_SALT = /Cookie::\$salt = '[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}\';/
+
+      def self.included_module(mod)
+        /^[^\/\/*]*'#{mod}'\s+=>\s+MODPATH.\'#{mod}\',/
+      end
     end
 
-    def generate_app
-      AppGenerator.new([APPLICATION_NAME], ["-p=#{test_path}", "-V"]).invoke_all
+    def generate_app(options=[])
+      AppGenerator.new([APPLICATION_NAME], app_generator_options+options).invoke_all
     end
 
     def destroy_app
@@ -26,6 +30,10 @@ module KohanaScaffold
     end
 
     private
+
+    def app_generator_options
+      ["-p=#{test_path}", "-V"]
+    end
 
     def test_path
       File.expand_path("../../../tmp/", __FILE__)

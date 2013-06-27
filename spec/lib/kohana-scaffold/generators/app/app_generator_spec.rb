@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe KohanaScaffold::AppGenerator do
   it_behaves_like "a Kohana skeleton generator"
+  it_behaves_like "a mountable engine", "auth"
+  it_behaves_like "a mountable engine", "cache"
+  it_behaves_like "a mountable engine", "codebench"
+  it_behaves_like "a mountable engine", "database"
+  it_behaves_like "a mountable engine", "image"
+  it_behaves_like "a mountable engine", "minion"
+  it_behaves_like "a mountable engine", "orm"
+  it_behaves_like "a mountable engine", "unittest"
+  it_behaves_like "a mountable engine", "userguide"
 
   describe "options" do
     let(:options) {[]}
