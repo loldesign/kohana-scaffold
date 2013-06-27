@@ -4,10 +4,12 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-
-if ENV['COVERAGE']
-  require 'simplecov'
-  SimpleCov.start
+require 'simplecov'
+SimpleCov.start do
+  add_filter '.vendor'
+  add_group 'Generators', 'lib/kohana-scaffold/generators'
+  add_group 'Support', 'spec/support'
+  minimum_coverage 90
 end
 
 require "kohana-scaffold"
