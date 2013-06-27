@@ -1,4 +1,6 @@
 .rspec
+.DS_Store
+kohana*.gem
 Gemfile.lock
 
 .bundle/
