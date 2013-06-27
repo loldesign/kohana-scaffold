@@ -4,6 +4,11 @@ module KohanaScaffold
 
     APPLICATION_NAME = "sample-app"
 
+    class Regexp
+      BASE_URL    = /\'base_url\' => \'\/#{APPLICATION_NAME}\/\',/
+      COOKIE_SALT = /Cookie::\$salt = '[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}\';/
+    end
+
     def generate_app
       AppGenerator.new([APPLICATION_NAME], ["-p=#{test_path}", "-V"]).invoke_all
     end
@@ -15,6 +20,12 @@ module KohanaScaffold
     def application_path
       File.join(test_path, APPLICATION_NAME)
     end
+
+    def file_absolute_path(file)
+      File.join(KohanaScaffold::Test.application_path, file)
+    end
+
+    private
 
     def test_path
       File.expand_path("../../../tmp/", __FILE__)
