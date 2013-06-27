@@ -4,7 +4,9 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'pry'
 require 'simplecov'
+
 SimpleCov.start do
   add_filter '.vendor'
   add_group 'Generators', 'lib/kohana-scaffold/generators'
