@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.add_dependency('thor', '0.18.1')
   s.add_dependency('activesupport', '4.0.0')
 
+  s.add_development_dependency('guard', '1.8.1')
+  s.add_development_dependency('guard-rspec', '3.0.2')
   s.add_development_dependency('pry', '0.9.12.2')
   s.add_development_dependency('rspec', '2.13.0')
   s.add_development_dependency('simplecov', '0.7.1')
