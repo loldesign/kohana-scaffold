@@ -48,5 +48,14 @@ describe KohanaScaffold::AppGenerator do
         it {generator.options[:modules].should == ["auth"]}
       end
     end
+
+    context 'validate' do
+      let(:options) {["-m=auth", "image", "orm", "wrong", "guard"]}
+
+      it "raise a custom error with invalids modules" do
+        expect {described_class.new(["sample-app"], options)}
+          .to raise_error(ArgumentError, 'invalid modules names: wrong, guard')
+      end
+    end
   end
 end
