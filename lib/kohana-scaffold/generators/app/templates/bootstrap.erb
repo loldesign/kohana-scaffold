@@ -108,10 +108,8 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-  <% Settings.modules.each do |module_name| %>
-    <% if @options[:modules].include?(module_name) %>
-      '<%= module_name  %>' => MODPATH.'<%= module_name  %>',
-    <% end %>
+  <% @options[:modules].each do |module_name| %>
+    '<%= module_name %>' => MODPATH.'<%= module_name %>',
   <% end %>
   ));
 

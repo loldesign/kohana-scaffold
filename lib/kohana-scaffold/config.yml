@@ -1,2 +1,0 @@
-options:
-  modules: <%= %w(auth cache codebench database image minion orm unittest userguide) %>
