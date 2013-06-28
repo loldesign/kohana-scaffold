@@ -9,14 +9,18 @@ shared_examples "a Kohana skeleton generator" do
     modules
     system
     vendor
+    .htaccess
     composer.json
     composer.lock
     composer.phar
-    example.htaccess
     index.php
     install_.php
     LICENSE.md
     README.md
+  )
+
+  REMOVED_FILES = %w(
+    example.htaccess
   )
 
   before(:all) do
@@ -28,9 +32,19 @@ shared_examples "a Kohana skeleton generator" do
   end
 
   context 'skeleton' do
-    it "checks if default files and folders are present" do
+    context 'needed files' do
       DEFAULT_SKELETON.each do |resource|
-        File.exists?(File.join(KohanaScaffold::Test.application_path, resource)).should be_true
+        it "checks if #{resource} is present" do
+          resource.should be_present_in_kohana
+        end
+      end
+    end
+
+    context 'unused files' do
+      REMOVED_FILES.each do |resource|
+        it "checks if #{resource} is not present" do
+          resource.should_not be_present_in_kohana
+        end
       end
     end
   end
@@ -44,6 +58,7 @@ shared_examples "a Kohana skeleton generator" do
 
       it {should match(KohanaScaffold::Test::Regexp::BASE_URL)}
       it {should match(KohanaScaffold::Test::Regexp::COOKIE_SALT)}
+      it {should match(KohanaScaffold::Test::Regexp::INDEX_FILE)}
     end
   end
 end

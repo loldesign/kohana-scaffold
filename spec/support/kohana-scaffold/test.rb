@@ -6,6 +6,7 @@ module KohanaScaffold
 
     class Regexp
       BASE_URL    = /\'base_url\' => \'\/#{APPLICATION_NAME}\/\',/
+      INDEX_FILE  = /\'index_file\' => \'\'/
       COOKIE_SALT = /Cookie::\$salt = '[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}\';/
 
       def self.included_module(mod)

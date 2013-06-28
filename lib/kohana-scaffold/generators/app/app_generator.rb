@@ -49,6 +49,10 @@ module KohanaScaffold
       directory("kohana", project_name, default_options)
     end
 
+    def create_htaccess
+      template("htaccess.erb", "#{project_name}/.htaccess", default_options)
+    end
+
     def create_cache_folder
       empty_directory("#{project_name}/application/cache", default_options)
     end
