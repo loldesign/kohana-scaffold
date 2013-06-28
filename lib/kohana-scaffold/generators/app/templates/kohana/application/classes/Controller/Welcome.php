@@ -1,14 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Welcome extends Controller {
+class Controller_Welcome extends Controller_Application {
 
 	public function action_index()
 	{
-		$view = View::factory('layout/template');
-		$view->title = "KohanaScaffold";
-		$view->content = View::factory('welcome/index');
-
-		$this->response->body($view);
+		$this->template->content = View::factory('welcome/index');
 	}
 
 } // End Welcome
