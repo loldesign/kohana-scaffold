@@ -4,7 +4,10 @@ class Controller_Welcome extends Controller {
 
 	public function action_index()
 	{
-		$view = View::factory('welcome/index');
+		$view = View::factory('layout/template');
+		$view->title = "KohanaScaffold";
+		$view->content = View::factory('welcome/index');
+
 		$this->response->body($view);
 	}
 
