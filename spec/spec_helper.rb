@@ -9,6 +9,7 @@ require 'simplecov'
 
 SimpleCov.start do
   add_filter '.vendor'
+  add_filter 'spec'
   add_group 'Generators', 'lib/kohana-scaffold/generators'
   add_group 'Support', 'spec/support'
   minimum_coverage 90
