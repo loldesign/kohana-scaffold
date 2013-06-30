@@ -3,22 +3,17 @@ module KohanaScaffold
     extend self
 
     COMMANDS = {
-      "new"   => KohanaScaffold::Runner::New,
-      "help"  => KohanaScaffold::Runner::Help
+      "new"   => KohanaScaffold::AppGenerator,
+      "help"  => KohanaScaffold::Help
     }
 
     def localize_command(args)
-      begin
-        action = args.shift
-        runner = runner_for(action)
-        runner.run(args)
-      rescue Thor::RequiredArgumentMissingError
-        runner.help
-      end
+      action = args.shift
+      runner_for(action).start(args)
     end
 
     def runner_for(action)
-      COMMANDS.fetch(action, KohanaScaffold::Runner::Help)
+      COMMANDS.fetch(action, KohanaScaffold::Help)
     end
   end
 end

@@ -45,6 +45,10 @@ module KohanaScaffold
       File.join(File.dirname(__FILE__), 'templates')
     end
 
+    def self.banner
+      "kohana new #{self.arguments.map(&:usage).join(' ')} [options]"
+    end
+
     def copy_kohana
       directory("kohana", project_name, default_options)
     end

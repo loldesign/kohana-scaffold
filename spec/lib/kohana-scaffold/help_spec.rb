@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe KohanaScaffold::Runner::Help do
+describe KohanaScaffold::Help do
   describe '.run' do
     context 'stdout' do
       it "should call Kernel.stdout" do
         Kernel.should_receive(:puts)
-        described_class.run
+        described_class.start
       end
     end
 
