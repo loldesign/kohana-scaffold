@@ -10,7 +10,7 @@
   <body>
     <nav class="navbar">
       <article class="row">
-        <ul class="one">
+        <ul class="menu">
           <li><?= html::anchor('welcome', 'Home') ?></li>
         </ul>
       </article>

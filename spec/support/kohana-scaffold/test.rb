@@ -15,11 +15,14 @@ module KohanaScaffold
     end
 
     def generate_app(options=[])
+      FileUtils.cd(test_path)
       AppGenerator.new([APPLICATION_NAME], app_generator_options+options).invoke_all
+      FileUtils.cd(application_path)
     end
 
     def destroy_app
       FileUtils.remove_dir(application_path)
+      FileUtils.cd(test_path)
     end
 
     def application_path

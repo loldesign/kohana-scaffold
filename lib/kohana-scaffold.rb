@@ -1,5 +1,6 @@
 require 'rubygems'
 
+require 'active_support/inflector'
 require 'thor/actions'
 require 'thor/group'
 

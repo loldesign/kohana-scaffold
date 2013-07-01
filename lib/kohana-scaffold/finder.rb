@@ -3,8 +3,9 @@ module KohanaScaffold
     extend self
 
     COMMANDS = {
-      "new"   => KohanaScaffold::AppGenerator,
-      "help"  => KohanaScaffold::Help
+      "new"       => KohanaScaffold::AppGenerator,
+      "scaffold"  => KohanaScaffold::ScaffoldGenerator,
+      "help"      => KohanaScaffold::Help
     }
 
     def localize_command(args)

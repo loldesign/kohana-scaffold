@@ -1,0 +1,26 @@
+<h1><%= name.capitalize.pluralize %>#index</h1>
+
+<?= View::factory('shared/messages')->set('type', 'danger') ?>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><?= html::anchor("<%= name.downcase.pluralize %>/show/1", "Macbook Air 11\"") ?></td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</td>
+      <td>$ 999,00</td>
+    </tr>
+    <tr>
+      <td><?= html::anchor("<%= name.downcase.pluralize %>/show", "Galaxy S3") ?></td>
+      <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</td>
+      <td>$ 599,00</td>
+    </tr>
+  </tbody>
+</table>

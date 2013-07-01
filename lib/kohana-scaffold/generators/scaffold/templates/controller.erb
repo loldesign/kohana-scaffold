@@ -1,0 +1,23 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+
+class Controller_<%= name.capitalize.pluralize %> extends Controller_Application {
+
+  public function action_index()
+  {
+    $this->template->content = View::factory('<%= name.downcase %>/index');
+  }
+
+  public function action_show()
+  {
+    $id = $this->request->param('id', FALSE);
+
+    if (!$id){
+      Session::instance()->set('flash_message', '<%= name.capitalize  %> not found.');
+      $this->redirect('<%= name.downcase.pluralize %>');
+    }
+
+    $this->template->content = View::factory('<%= name.downcase %>/show')->bind('id', $id);
+  }
+
+} // End <%= name.capitalize.pluralize %>
+
