@@ -16,7 +16,7 @@ module KohanaScaffold
       userguide
     )
 
-    argument :project_name
+    argument :project_path
 
     class_option :public_path,
       default: '/Applications/MAMP/htdocs',
@@ -36,7 +36,9 @@ module KohanaScaffold
 
     def initialize(args=[], options={}, config={})
       super(args, options, config)
-      self.destination_root = "#{@options[:public_path]}/"
+
+      self.destination_root = project_path
+      @project_name = project_path.split('/').last
 
       raise_module_error if has_invalid_modules?
     end
@@ -50,19 +52,19 @@ module KohanaScaffold
     end
 
     def copy_kohana
-      directory("kohana", project_name, default_options)
+      directory("kohana", ".", default_options)
     end
 
     def create_htaccess
-      template("htaccess.erb", "#{project_name}/.htaccess", default_options)
+      template("htaccess.erb", ".htaccess", default_options)
     end
 
     def create_cache_folder
-      empty_directory("#{project_name}/application/cache", default_options)
+      empty_directory("application/cache", default_options)
     end
 
     def create_bootstrap
-      template("bootstrap.erb", "#{project_name}/application/bootstrap.php", default_options)
+      template("bootstrap.erb", "application/bootstrap.php", default_options)
     end
 
     def add_default_cookie_salt
@@ -71,7 +73,7 @@ module KohanaScaffold
       )
 
       cookie_salt = "Cookie::$salt = '#{SecureRandom.uuid}';"
-      inject_into_file("#{project_name}/application/bootstrap.php", cookie_salt, options)
+      inject_into_file("application/bootstrap.php", cookie_salt, options)
     end
 
     private
