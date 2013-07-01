@@ -21,7 +21,7 @@ module KohanaScaffold
     class_option :public_path,
       default: '/Applications/MAMP/htdocs',
       aliases: '-p',
-      desc: 'Define the Apache public directory'
+      desc: 'Define the Apache public directory. A symbolic link will be created here.'
 
     class_option :modules,
       default: [],
@@ -74,6 +74,10 @@ module KohanaScaffold
 
       cookie_salt = "Cookie::$salt = '#{SecureRandom.uuid}';"
       inject_into_file("application/bootstrap.php", cookie_salt, options)
+    end
+
+    def symbolic_link
+      system("ln -s #{destination_root} #{@options[:public_path]}")
     end
 
     private
