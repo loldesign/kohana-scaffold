@@ -16,6 +16,13 @@ describe KohanaScaffold::Finder do
     end
   end
 
+  describe 'banner message' do
+    context 'AppGenerator' do
+      let(:output) {capture(:stdout){described_class.localize_command(["new", "-h"])}}
+      it {output.should match(/kohana new PROJECT_PATH \[options\]/)}
+    end
+  end
+
   describe ".runner_for" do
     subject do
       described_class.runner_for(action)

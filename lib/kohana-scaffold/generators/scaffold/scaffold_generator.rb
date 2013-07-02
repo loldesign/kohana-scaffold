@@ -8,8 +8,6 @@ module KohanaScaffold
       File.join(File.dirname(__FILE__), 'templates')
     end
 
-    # TODO
-    # Test this method
     def validate
       unless File.exist?("application/bootstrap.php")
         Kernel.puts "To run kohana scaffold please go to the project root folder."

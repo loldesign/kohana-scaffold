@@ -23,4 +23,12 @@ shared_examples "a Kohana controller generator" do |name|
       end
     end
   end
+
+  context '#validate' do
+    it "should prevent of to run scaffold command outside of project root" do
+      Kernel.should_receive(:puts).with("To run kohana scaffold please go to the project root folder.")
+      FileUtils.cd("/tmp")
+      expect { KohanaScaffold::ScaffoldGenerator.start(["item"]) }.to raise_error SystemExit
+    end
+  end
 end

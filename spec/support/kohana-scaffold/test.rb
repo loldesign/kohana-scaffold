@@ -36,7 +36,7 @@ module KohanaScaffold
     private
 
     def app_generator_options
-      ["-p=#{test_path}", "-V"]
+      ["-p=#{test_path}/symblink", "-V"]
     end
 
     def test_path
