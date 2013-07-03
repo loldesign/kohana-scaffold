@@ -3,10 +3,6 @@ shared_examples "a mountable engine" do |mod|
     KohanaScaffold::Test.generate_app(["-m=#{mod}"])
   end
 
-  after(:all) do
-    KohanaScaffold::Test.destroy_app
-  end
-
   context "enable module #{mod}" do
     subject do
       file = KohanaScaffold::Test.file_absolute_path("application/bootstrap.php")

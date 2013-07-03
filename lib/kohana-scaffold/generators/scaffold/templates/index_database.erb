@@ -1,0 +1,26 @@
+<h1><%= name.capitalize.pluralize %>#index</h1>
+
+<?= View::factory('shared/messages')->set('type', 'danger') ?>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <% fields.each do |field| %>
+        <th><%= field.capitalize %></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <? foreach ($<%= name.downcase.pluralize %> as $<%= name.downcase %>) { ?>
+      <tr>
+        <td><?= html::anchor("<%= name.downcase.pluralize %>/show/$<%= name.downcase %>->id", $<%= name.downcase %>-><%= fields.first.downcase %>); ?></td>
+        <% fields.each_with_index do |field, index| %>
+          <% if index > 0 %>
+            <td><?= <%= "$#{name.downcase}->#{field.downcase}" %> ?></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <? } ?>
+  </tbody>
+</table>

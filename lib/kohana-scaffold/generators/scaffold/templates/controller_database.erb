@@ -1,0 +1,27 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+
+class Controller_<%= name.capitalize.pluralize %> extends Controller_Application {
+
+  public function action_index()
+  {
+    $<%= name.downcase %> = ORM::factory('<%= name.capitalize %>');
+    $<%= name.downcase.pluralize %> = $<%= name.downcase %>->find_all();
+    $count = $<%= name.downcase %>->count_all();
+
+    $this->template->content = View::factory('<%= name.downcase %>/index')
+      ->bind('count', $count)
+      ->bind('<%= name.downcase.pluralize %>', $<%= name.downcase.pluralize%>);
+  }
+
+  public function action_show()
+  {
+    $id = $this->request->param('id');
+    $<%= name.downcase %> = ORM::factory('<%= name.capitalize %>', $id);
+
+    $this->template->content = View::factory('<%= name.downcase %>/show')
+      ->bind('id', $id)
+      ->bind('<%= name.downcase %>', $<%= name.downcase%>);
+  }
+
+} // End <%= name.capitalize.pluralize %>
+

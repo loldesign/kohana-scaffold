@@ -1,0 +1,16 @@
+<h1><%= name.capitalize %>#<?= $id ?></h1>
+
+<article class="twelve columns">
+  <% fields.each_with_index do |field| %>
+    <p>
+      <strong><%= field.capitalize %> </strong>
+      <?= <%= "$#{name.downcase}->#{field.downcase}" %> ?>
+    </p>
+  <% end %>
+</article>
+
+<div class="kohana-actions">
+  <div class="medium primary btn">
+    <?= html::anchor('<%= name.downcase.pluralize %>', 'Back') ?>
+  </div>
+</div>
