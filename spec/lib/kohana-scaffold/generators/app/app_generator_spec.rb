@@ -49,6 +49,17 @@ describe KohanaScaffold::AppGenerator do
       end
     end
 
+    context 'database' do
+      context 'default' do
+        it {generator.options[:with_db].should be_false}
+      end
+
+      context 'custom' do
+        let(:options) {["--with-db"]}
+        it {generator.options[:with_db].should be_true}
+      end
+    end
+
     context 'validate' do
       let(:options) {["-m=auth", "image", "orm", "wrong", "guard"]}
 

@@ -34,6 +34,10 @@ module KohanaScaffold
       aliases: '-V',
       desc: 'Silent mode'
 
+    class_option :with_db,
+      type: :boolean,
+      desc: 'Enable to configure the database'
+
     def initialize(args=[], options={}, config={})
       super(args, options, config)
 
@@ -78,6 +82,22 @@ module KohanaScaffold
 
     def symbolic_link
       system("ln -s #{destination_root} #{@options[:public_path]}")
+    end
+
+    def config_database
+      if @options[:with_db]
+        host      = ask("MySql host: (default: localhost)")
+        name      = ask("MySql database name: (default: #{@project_name})")
+        username  = ask("MySql username: (default: root)")
+        password  = ask("MySql password: (default: root)")
+
+        @db_host      = host.blank? ? "localhost" : host
+        @db_name      = name.blank? ? @project_name : name
+        @db_username  = username.blank? ? "root" : username
+        @db_password  = password.blank? ? "root" : password
+
+        template("mysql.erb", "application/config/database.php", default_options)
+      end
     end
 
     private
